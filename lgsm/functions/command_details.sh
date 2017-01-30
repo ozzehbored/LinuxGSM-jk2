@@ -513,6 +513,24 @@ fn_details_quake3(){
 	} | column -s $'\t' -t
 }
 
+fn_details_jo(){
+	echo -e "netstat -atunp | grep jk2ded"
+	echo -e ""
+	{
+		echo -e "DESCRIPTION\tDIRECTION\tPORT\tPROTOCOL"
+		echo -e "> Game\tINBOUND\t${port}\tudp"
+	} | column -s $'\t' -t
+}
+
+fn_details_ja(){
+	echo -e "netstat -atunp | grep jaded"
+	echo -e ""
+	{
+		echo -e "DESCRIPTION\tDIRECTION\tPORT\tPROTOCOL"
+		echo -e "> Game\tINBOUND\t${port}\tudp"
+	} | column -s $'\t' -t
+}
+
 fn_details_quakelive(){
 	echo -e "netstat -atunp | grep qzeroded"
 	echo -e ""
@@ -814,6 +832,10 @@ fn_display_details() {
 		fn_details_factorio    
 	elif [ "${gamename}" == "Hurtworld" ]; then
 		fn_details_hurtworld
+	elif [ "${gamename}" == "Jedi Knight II: Jedi Outcast" ]; then
+		fn_details_jo
+	elif [ "${gamename}" == "Jedi Knight: Jedi Academy" ]; then
+		fn_details_ja
 	elif [ "${gamename}" == "QuakeWorld" ]; then
 		fn_details_quake
 	elif [ "${gamename}" == "Quake 2" ]; then

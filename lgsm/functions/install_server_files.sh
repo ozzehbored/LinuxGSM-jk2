@@ -39,7 +39,10 @@ fn_install_server_files(){
 		fileurl="http://files.gameservermanagers.com/UnrealTournament3/UT3-linux-server-2.1.tar.bz2"; filedir="${tmpdir}"; filename="UT3-linux-server-2.1.tar.bz2";  executecmd="noexecute" run="norun"; force="noforce"; md5="2527437b46f1b47f20228d27d72395a6"
 	elif [ "${gamename}" == "Wolfenstein: Enemy Territory" ]; then
 		fileurl="http://files.gameservermanagers.com/WolfensteinEnemyTerritory/enemy-territory.260b.tar.bz2"; filedir="${tmpdir}"; filename="enemy-territory.260b.tar.bz2";  executecmd="noexecute" run="norun"; force="noforce"; md5="f833f514bfcdd46b42c111f83350c5a7"
+	elif [ "${gamename}" == "Jedi Knight II: Jedi Outcast" ]; then
+		fileurl="https://jk2mv.org/data/_uploaded/file/jk2mv-v1.2.1-dedicated.zip"; filedir="${tmpdir}"; filename="jk2mv-v1.2.1-dedicated.zip"; executecmd="noexecute"; run="norun"; force="noforce"; md5="6bacf3633171f328dc671f3515466bda";
 	fi
+	## todo: ja binaries (openjk?)
 	fn_fetch_file "${fileurl}" "${filedir}" "${filename}" "${executecmd}" "${run}" "${force}" "${md5}"
 	fn_dl_extract "${filedir}" "${filename}" "${filesdir}"
 }
@@ -80,6 +83,9 @@ fn_install_server_files_steamcmd(){
 				if [ "${engine}" == "goldsource" ]; then
 					${unbuffer} ./steamcmd.sh +login "${steamuser}" "${steampass}" +force_install_dir "${filesdir}" +app_set_config 90 mod "${appidmod}" +app_update "${appid}" ${branch} +quit
 					local exitcode=$?
+				elif [ "${gamename}" == "Jedi Knight II: Jedi Outcast"] || [ "${gamename}" == "Jedi Knight: Jedi Academy"]
+					${unbuffer} ./steamcmd.sh +login "${steamuser}" "${steampass}" +force_install_dir "${filesdir}" +@sSteamCmdForcePlatformType windows +app_update "${appid}" ${branch} +quit
+					local exitcode=$?
 				else
 					${unbuffer} ./steamcmd.sh +login "${steamuser}" "${steampass}" +force_install_dir "${filesdir}" +app_update "${appid}" ${branch} +quit
 					local exitcode=$?
@@ -87,6 +93,9 @@ fn_install_server_files_steamcmd(){
 			elif [ "${counter}" -ge "5" ]; then
 				if [ "${engine}" == "goldsource" ]; then
 					${unbuffer} ./steamcmd.sh +login "${steamuser}" "${steampass}" +force_install_dir "${filesdir}" +app_set_config 90 mod "${appidmod}" +app_update "${appid}" ${branch} -validate +quit
+					local exitcode=$?
+				elif [ "${gamename}" == "Jedi Knight II: Jedi Outcast"] || [ "${gamename}" == "Jedi Knight: Jedi Academy"]
+					${unbuffer} ./steamcmd.sh +login "${steamuser}" "${steampass}" +force_install_dir "${filesdir}" +@sSteamCmdForcePlatformType windows +app_update "${appid}" ${branch} -validate +quit
 					local exitcode=$?
 				else
 					${unbuffer} ./steamcmd.sh +login "${steamuser}" "${steampass}" +force_install_dir "${filesdir}" +app_update "${appid}" ${branch} -validate +quit

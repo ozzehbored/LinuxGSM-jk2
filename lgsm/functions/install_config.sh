@@ -20,9 +20,9 @@ fn_check_cfgdir(){
 # Downloads default configs from Game-Server-Configs repo to lgsm/default-configs
 fn_fetch_default_config(){
 	mkdir -pv "${lgsmdir}/default-configs"
-	githuburl="https://github.com/GameServerManagers/Game-Server-Configs/master"
+	githuburl="https://github.com/ozzehbored/Game-Server-Configs/master"
 	for config in "${array_configs[@]}"; do
-		fileurl="https://raw.githubusercontent.com/GameServerManagers/Game-Server-Configs/master/${gamedirname}/${config}"; filedir="${lgsmdir}/default-configs"; filename="${config}";  executecmd="noexecute" run="norun"; force="noforce"
+		fileurl="https://raw.githubusercontent.com/ozzehbored/Game-Server-Configs/master/${gamedirname}/${config}"; filedir="${lgsmdir}/default-configs"; filename="${config}";  executecmd="noexecute" run="norun"; force="noforce"
 		fn_fetch_file "${fileurl}" "${filedir}" "${filename}" "${executecmd}" "${run}" "${force}" "${md5}"
 	done
 }
@@ -122,7 +122,7 @@ fn_set_dst_config_vars(){
 echo ""
 echo "Downloading ${gamename} Config"
 echo "================================="
-echo "default configs from https://github.com/GameServerManagers/Game-Server-Configs"
+echo "default configs from https://github.com/ozzehbored/Game-Server-Configs"
 sleep 2
 if [ "${gamename}" == "7 Days To Die" ]; then
 	gamedirname="7DaysToDie"
@@ -315,6 +315,18 @@ elif [ "${gamename}" == "Half Life 2: Deathmatch" ]; then
 	fn_set_config_vars
 elif [ "${gamename}" == "Insurgency" ]; then
 	gamedirname="Insurgency"
+	array_configs+=( server.cfg )
+	fn_fetch_default_config
+	fn_default_config_remote
+	fn_set_config_vars
+elif [ "${gamename}" == "Jedi Knight II: Jedi Outcast" ]; then
+	gamedirname="JediOutcast"
+	array_configs+=( server.cfg )
+	fn_fetch_default_config
+	fn_default_config_remote
+	fn_set_config_vars
+elif [ "${gamename}" == "Jedi Knight: Jedi Academy" ]; then
+	gamedirname="JediAcademy"
 	array_configs+=( server.cfg )
 	fn_fetch_default_config
 	fn_default_config_remote

@@ -27,6 +27,8 @@ fn_update_steamcmd_dl(){
 
 	if [ "${engine}" == "goldsource" ]; then
 		${unbuffer} ./steamcmd.sh +login "${steamuser}" "${steampass}" +force_install_dir "${filesdir}" +app_set_config 90 mod ${appidmod} +app_update "${appid}" ${branch} +quit | tee -a "${scriptlog}"
+	elif [ "${gamename}" == "Jedi Knight II: Jedi Outcast"] || [ "${gamename}" == "Jedi Knight: Jedi Academy"]
+		${unbuffer} ./steamcmd.sh +login "${steamuser}" "${steampass}" +force_install_dir "${filesdir}" +@sSteamCmdForcePlatformType windows +app_update "${appid}" ${branch} +quit| tee -a "${scriptlog}"
 	else
 		${unbuffer} ./steamcmd.sh +login "${steamuser}" "${steampass}" +force_install_dir "${filesdir}" +app_update "${appid}" ${branch} +quit | tee -a "${scriptlog}"
 	fi

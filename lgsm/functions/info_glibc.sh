@@ -50,6 +50,12 @@ elif [ "${gamename}" == "Garry's Mod" ]; then
 elif [ "${gamename}" == "GoldenEye: Source" ]; then
 	glibcrequired="2.15"
 	glibcfix="yes"
+elif [ "${gamename}" == "Jedi Knight II: Jedi Outcast" ]; then
+	glibcrequired="NOT REQUIRED"
+	glibcfix="no"
+elif [ "${gamename}" == "Jedi Knight: Jedi Academy" ]; then
+	glibcrequired="NOT REQUIRED"
+	glibcfix="no"
 elif [ "${gamename}" == "Insurgency" ]; then
 	glibcrequired="2.15"
 	glibcfix="yes"
