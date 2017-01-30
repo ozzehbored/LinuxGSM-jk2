@@ -29,7 +29,7 @@ fn_validation(){
 	if [ "${engine}" == "goldsource" ]; then
 		${unbuffer} ./steamcmd.sh +login "${steamuser}" "${steampass}" +force_install_dir "${filesdir}" +app_set_config 90 mod ${appidmod} +app_update "${appid}" ${branch} +app_update "${appid}" ${branch} validate +quit| tee -a "${scriptlog}"
 	# jk2 & ja repositories don't include the linux binaries, so force downloading of the Windows files
-		elif [ "${gamename}" == "Jedi Knight II: Jedi Outcast"] || [ "${gamename}" == "Jedi Knight: Jedi Academy"]
+		elif [ "${gamename}" == "Jedi Knight II: Jedi Outcast"] || [ "${gamename}" == "Jedi Knight: Jedi Academy"]; then
 		${unbuffer} ./steamcmd.sh +login "${steamuser}" "${steampass}" +force_install_dir "${filesdir}" +@sSteamCmdForcePlatformType windows +app_update "${appid}" ${branch} validate +quit| tee -a "${scriptlog}"
 	else
 		${unbuffer} ./steamcmd.sh +login "${steamuser}" "${steampass}" +force_install_dir "${filesdir}" +app_update "${appid}" ${branch} validate +quit| tee -a "${scriptlog}"
