@@ -40,7 +40,7 @@ fn_install_server_files(){
 	elif [ "${gamename}" == "Wolfenstein: Enemy Territory" ]; then
 		fileurl="http://files.gameservermanagers.com/WolfensteinEnemyTerritory/enemy-territory.260b.tar.bz2"; filedir="${tmpdir}"; filename="enemy-territory.260b.tar.bz2";  executecmd="noexecute" run="norun"; force="noforce"; md5="f833f514bfcdd46b42c111f83350c5a7"
 	elif [ "${gamename}" == "Jedi Knight II: Jedi Outcast" ]; then
-		fileurl="https://fastdl.angrychairs.org/lgsm/jo/jk2mv-v1.2.1-dedicated.zip"; filedir="${tmpdir}"; filename="jk2mv-v1.2.1-dedicated.zip"; executecmd="noexecute"; run="norun"; force="noforce"; md5="6bacf3633171f328dc671f3515466bda";
+		fileurl="https://fastdl.angrychairs.org/lgsm/jo/jk2mv-v1.2.1-dedicated.zip"; filedir="${tmpdir}"; filename="jk2mv-v1.2.1-dedicated.zip"; executecmd="noexecute"; run="norun"; force="noforce"; md5="0b71f072c8c1b823c4306f6065e443b8";
 	fi
 	## todo: ja binaries (openjk?)
 	fn_fetch_file "${fileurl}" "${filedir}" "${filename}" "${executecmd}" "${run}" "${force}" "${md5}"
