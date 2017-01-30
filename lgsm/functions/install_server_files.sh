@@ -83,7 +83,7 @@ fn_install_server_files_steamcmd(){
 				if [ "${engine}" == "goldsource" ]; then
 					${unbuffer} ./steamcmd.sh +login "${steamuser}" "${steampass}" +force_install_dir "${filesdir}" +app_set_config 90 mod "${appidmod}" +app_update "${appid}" ${branch} +quit
 					local exitcode=$?
-				elif [ "${gamename}" == "Jedi Knight II: Jedi Outcast"] || [ "${gamename}" == "Jedi Knight: Jedi Academy"]; then
+				elif [[  "${gamename}" == "Jedi Knight II: Jedi Outcast" ]] || [[ "${gamename}" == "Jedi Knight: Jedi Academy" ]]; then
 					${unbuffer} ./steamcmd.sh +login "${steamuser}" "${steampass}" +force_install_dir "${filesdir}" +@sSteamCmdForcePlatformType windows +app_update "${appid}" ${branch} +quit
 					local exitcode=$?
 				else
@@ -94,7 +94,7 @@ fn_install_server_files_steamcmd(){
 				if [ "${engine}" == "goldsource" ]; then
 					${unbuffer} ./steamcmd.sh +login "${steamuser}" "${steampass}" +force_install_dir "${filesdir}" +app_set_config 90 mod "${appidmod}" +app_update "${appid}" ${branch} -validate +quit
 					local exitcode=$?
-				elif [ "${gamename}" == "Jedi Knight II: Jedi Outcast"] || [ "${gamename}" == "Jedi Knight: Jedi Academy"]; then
+				elif [[  "${gamename}" == "Jedi Knight II: Jedi Outcast" ]] || [[ "${gamename}" == "Jedi Knight: Jedi Academy" ]]; then
 					${unbuffer} ./steamcmd.sh +login "${steamuser}" "${steampass}" +force_install_dir "${filesdir}" +@sSteamCmdForcePlatformType windows +app_update "${appid}" ${branch} -validate +quit
 					local exitcode=$?
 				else
